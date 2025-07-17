@@ -1,8 +1,13 @@
 [
   {
-    "name": "OGW Shopify Theme",
-    "version": "1.0.0",
-    "author": "SiriusTVT",
-    "description": "Tema base para tienda Shopify."
+    "name": "Configuración general",
+    "settings": [
+      {
+        "type": "text",
+        "id": "shop_name",
+        "label": "Nombre de la tienda",
+        "default": "OGW Tech"
+      }
+    ]
   }
 ]
