@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Configuración general",
+    "settings": [
+      {
+        "type": "text",
+        "id": "shop_name",
+        "label": "Nombre de la tienda",
+        "default": "OGW Tech"
+      }
+    ]
+  }
+]
