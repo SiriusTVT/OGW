@@ -1,5 +1,16 @@
-{{ 'theme.css' | asset_url | stylesheet_tag }}
-{% section 'header' %}
-{% section 'home' %}
-{% section 'main' %}
-{% section 'footer' %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ shop.name }}</title>
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+  </head>
+  <body>
+    {% section 'header' %}
+    {% section 'home' %}
+    {% section 'main' %}
+    {% section 'footer' %}
+    {{ content_for_layout }}
+  </body>
+</html>
