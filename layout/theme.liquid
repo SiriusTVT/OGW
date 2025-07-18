@@ -15,6 +15,7 @@
       font-family: 'Roboto', sans-serif;
     }
   </style>
+  {{ content_for_header }}
  </head>
  <body class="bg-gray-50 text-gray-800">
   <!-- Header / Navbar -->
@@ -409,6 +410,7 @@
     © 2024 OGW Tech. Todos los derechos reservados.
    </div>
   </footer>
+  {{ content_for_layout }}
   <script>
    const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
