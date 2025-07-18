@@ -1,16 +1,421 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <title>{{ shop.name }}</title>
-    {{ 'theme.css' | asset_url | stylesheet_tag }}
-    {{ content_for_header }}
-  </head>
-  <body>
-    {% section 'header' %}
-    {% section 'home' %}
-    {% section 'main' %}
-    {% section 'footer' %}
-    {{ content_for_layout }}
-  </body>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   OGW Tech - Tienda de Gadgets y Accesorios
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 text-gray-800">
+  <!-- Header / Navbar -->
+  <header class="bg-white shadow sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+     <a class="flex items-center space-x-2" href="#">
+      <img alt="Logo OGW Tech en fondo blanco con letras negras y diseño tecnológico" class="h-10 w-10" height="40" src="https://storage.googleapis.com/a1aa/image/e1856e73-09a4-4626-7d57-f08cdd1eee64.jpg" width="40"/>
+      <span class="text-2xl font-bold text-indigo-600">
+       OGW Tech
+      </span>
+     </a>
+     <nav class="hidden md:flex space-x-8 font-semibold text-gray-700">
+      <a class="hover:text-indigo-600 transition" href="#">
+       Inicio
+      </a>
+      <a class="hover:text-indigo-600 transition" href="#productos">
+       Productos
+      </a>
+      <a class="hover:text-indigo-600 transition" href="#categorias">
+       Categorías
+      </a>
+      <a class="hover:text-indigo-600 transition" href="#ofertas">
+       Ofertas
+      </a>
+      <a class="hover:text-indigo-600 transition" href="#contacto">
+       Contacto
+      </a>
+     </nav>
+     <div class="hidden md:flex items-center space-x-4">
+      <button aria-label="Buscar productos" class="text-gray-600 hover:text-indigo-600 transition">
+       <i class="fas fa-search fa-lg">
+       </i>
+      </button>
+      <button aria-label="Ver carrito de compras" class="text-gray-600 hover:text-indigo-600 transition relative">
+       <i class="fas fa-shopping-cart fa-lg">
+       </i>
+       <span class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+        3
+       </span>
+      </button>
+      <button aria-label="Perfil de usuario" class="text-gray-600 hover:text-indigo-600 transition">
+       <i class="fas fa-user-circle fa-lg">
+       </i>
+      </button>
+     </div>
+     <!-- Mobile menu button -->
+     <div class="md:hidden flex items-center">
+      <button aria-label="Abrir menú móvil" class="text-gray-600 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="mobile-menu-button">
+       <i class="fas fa-bars fa-lg">
+       </i>
+      </button>
+     </div>
+    </div>
+   </div>
+   <!-- Mobile menu -->
+   <nav aria-label="Menú móvil" class="hidden md:hidden bg-white border-t border-gray-200" id="mobile-menu">
+    <a class="block px-4 py-3 text-gray-700 font-semibold hover:bg-indigo-50 hover:text-indigo-600" href="#">
+     Inicio
+    </a>
+    <a class="block px-4 py-3 text-gray-700 font-semibold hover:bg-indigo-50 hover:text-indigo-600" href="#productos">
+     Productos
+    </a>
+    <a class="block px-4 py-3 text-gray-700 font-semibold hover:bg-indigo-50 hover:text-indigo-600" href="#categorias">
+     Categorías
+    </a>
+    <a class="block px-4 py-3 text-gray-700 font-semibold hover:bg-indigo-50 hover:text-indigo-600" href="#ofertas">
+     Ofertas
+    </a>
+    <a class="block px-4 py-3 text-gray-700 font-semibold hover:bg-indigo-50 hover:text-indigo-600" href="#contacto">
+     Contacto
+    </a>
+   </nav>
+  </header>
+  <!-- Hero Section -->
+  <section aria-label="Sección principal con promoción de gadgets y accesorios" class="relative bg-indigo-600 text-white overflow-hidden">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col md:flex-row items-center justify-between">
+    <div class="md:w-1/2 space-y-6">
+     <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+      Descubre los mejores gadgets y accesorios en OGW Tech
+     </h1>
+     <p class="text-lg sm:text-xl max-w-md">
+      Tecnología innovadora y accesorios de alta calidad para potenciar tu vida diaria.
+     </p>
+     <a class="inline-block bg-white text-indigo-600 font-bold px-6 py-3 rounded-md shadow hover:bg-indigo-50 transition" href="#productos">
+      Ver productos
+     </a>
+    </div>
+    <div class="mt-10 md:mt-0 md:w-1/2 flex justify-center">
+     <img alt="Imagen promocional de gadgets y accesorios tecnológicos modernos sobre fondo blanco" class="rounded-lg shadow-lg" height="300" src="https://storage.googleapis.com/a1aa/image/ca32dca4-71f9-4336-8275-ece2e071e5fc.jpg" width="400"/>
+    </div>
+   </div>
+  </section>
+  <!-- Categories Section -->
+  <section aria-label="Sección de categorías de productos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="categorias">
+   <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
+    Explora nuestras categorías
+   </h2>
+   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+    <a class="group block bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center" href="#productos">
+     <img alt="Icono representativo de smartphones modernos con pantalla brillante y diseño elegante" class="mx-auto mb-4" height="120" src="https://storage.googleapis.com/a1aa/image/d2f808c5-a3fd-4965-0ff8-0c0da0be2d02.jpg" width="120"/>
+     <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600">
+      Smartphones
+     </h3>
+    </a>
+    <a class="group block bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center" href="#productos">
+     <img alt="Icono de audífonos inalámbricos modernos con diseño ergonómico y elegante" class="mx-auto mb-4" height="120" src="https://storage.googleapis.com/a1aa/image/db58c666-df30-4ec2-1fa2-00fe1f94bd4c.jpg" width="120"/>
+     <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600">
+      Audífonos
+     </h3>
+    </a>
+    <a class="group block bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center" href="#productos">
+     <img alt="Icono de smartwatch moderno con pantalla táctil y correa deportiva" class="mx-auto mb-4" height="120" src="https://storage.googleapis.com/a1aa/image/e1fa7252-5e43-4806-88b6-e4406262051b.jpg" width="120"/>
+     <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600">
+      Smartwatches
+     </h3>
+    </a>
+    <a class="group block bg-white rounded-lg shadow hover:shadow-lg transition p-6 text-center" href="#productos">
+     <img alt="Icono de accesorios tecnológicos variados como cables, cargadores y estuches" class="mx-auto mb-4" height="120" src="https://storage.googleapis.com/a1aa/image/33b3689b-137b-410a-451e-082927692738.jpg" width="120"/>
+     <h3 class="text-xl font-semibold text-gray-800 group-hover:text-indigo-600">
+      Accesorios
+     </h3>
+    </a>
+   </div>
+  </section>
+  <!-- Products Section -->
+  <section aria-label="Sección de productos destacados" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id="productos">
+   <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">
+    Productos Destacados
+   </h2>
+   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <article aria-label="Producto: Smartphone OGW X1" class="bg-white rounded-lg shadow hover:shadow-lg transition flex flex-col">
+     <img alt="Smartphone OGW X1 con pantalla grande, diseño moderno y color negro mate" class="rounded-t-lg object-cover h-48 w-full" height="300" src="https://storage.googleapis.com/a1aa/image/ab5b2964-5167-4013-72cf-3f197115bacb.jpg" width="400"/>
+     <div class="p-4 flex flex-col flex-grow">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">
+       Smartphone OGW X1
+      </h3>
+      <p class="text-gray-700 flex-grow">
+       Smartphone con cámara de 48MP, batería de larga duración y pantalla AMOLED.
+      </p>
+      <div class="mt-4 flex items-center justify-between">
+       <span class="text-indigo-600 font-bold text-xl">
+        $499.99
+       </span>
+       <button aria-label="Agregar Smartphone OGW X1 al carrito" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+        Añadir
+       </button>
+      </div>
+     </div>
+    </article>
+    <article aria-label="Producto: Audífonos Inalámbricos OGW SoundPro" class="bg-white rounded-lg shadow hover:shadow-lg transition flex flex-col">
+     <img alt="Audífonos inalámbricos OGW SoundPro en color negro con estuche de carga compacto" class="rounded-t-lg object-cover h-48 w-full" height="300" src="https://storage.googleapis.com/a1aa/image/bdf6f6fa-c87e-4551-5cd9-779dd8cc2842.jpg" width="400"/>
+     <div class="p-4 flex flex-col flex-grow">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">
+       Audífonos Inalámbricos OGW SoundPro
+      </h3>
+      <p class="text-gray-700 flex-grow">
+       Sonido envolvente, cancelación de ruido activa y batería de 24 horas.
+      </p>
+      <div class="mt-4 flex items-center justify-between">
+       <span class="text-indigo-600 font-bold text-xl">
+        $129.99
+       </span>
+       <button aria-label="Agregar Audífonos Inalámbricos OGW SoundPro al carrito" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+        Añadir
+       </button>
+      </div>
+     </div>
+    </article>
+    <article aria-label="Producto: Smartwatch OGW Fit 2" class="bg-white rounded-lg shadow hover:shadow-lg transition flex flex-col">
+     <img alt="Smartwatch OGW Fit 2 con pantalla táctil a color y correa deportiva negra" class="rounded-t-lg object-cover h-48 w-full" height="300" src="https://storage.googleapis.com/a1aa/image/8bfa9706-7f4f-46c2-56d9-90de5d5cf642.jpg" width="400"/>
+     <div class="p-4 flex flex-col flex-grow">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">
+       Smartwatch OGW Fit 2
+      </h3>
+      <p class="text-gray-700 flex-grow">
+       Monitor de actividad, notificaciones inteligentes y resistencia al agua.
+      </p>
+      <div class="mt-4 flex items-center justify-between">
+       <span class="text-indigo-600 font-bold text-xl">
+        $199.99
+       </span>
+       <button aria-label="Agregar Smartwatch OGW Fit 2 al carrito" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+        Añadir
+       </button>
+      </div>
+     </div>
+    </article>
+    <article aria-label="Producto: Cargador Rápido OGW Turbo" class="bg-white rounded-lg shadow hover:shadow-lg transition flex flex-col">
+     <img alt="Cargador rápido OGW Turbo con diseño compacto y puerto USB-C" class="rounded-t-lg object-cover h-48 w-full" height="300" src="https://storage.googleapis.com/a1aa/image/6281b087-58d0-4372-369d-26e710d4fcdd.jpg" width="400"/>
+     <div class="p-4 flex flex-col flex-grow">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">
+       Cargador Rápido OGW Turbo
+      </h3>
+      <p class="text-gray-700 flex-grow">
+       Carga rápida de 30W compatible con múltiples dispositivos.
+      </p>
+      <div class="mt-4 flex items-center justify-between">
+       <span class="text-indigo-600 font-bold text-xl">
+        $39.99
+       </span>
+       <button aria-label="Agregar Cargador Rápido OGW Turbo al carrito" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+        Añadir
+       </button>
+      </div>
+     </div>
+    </article>
+    <article aria-label="Producto: Estuche Protector OGW Armor" class="bg-white rounded-lg shadow hover:shadow-lg transition flex flex-col">
+     <img alt="Estuche protector OGW Armor para smartphone con diseño resistente y color negro" class="rounded-t-lg object-cover h-48 w-full" height="300" src="https://storage.googleapis.com/a1aa/image/2d503add-4286-45ac-80c6-6a5755d279c8.jpg" width="400"/>
+     <div class="p-4 flex flex-col flex-grow">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">
+       Estuche Protector OGW Armor
+      </h3>
+      <p class="text-gray-700 flex-grow">
+       Protección reforzada contra golpes y caídas para tu smartphone.
+      </p>
+      <div class="mt-4 flex items-center justify-between">
+       <span class="text-indigo-600 font-bold text-xl">
+        $24.99
+       </span>
+       <button aria-label="Agregar Estuche Protector OGW Armor al carrito" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+        Añadir
+       </button>
+      </div>
+     </div>
+    </article>
+    <article aria-label="Producto: Cable USB-C OGW Flex" class="bg-white rounded-lg shadow hover:shadow-lg transition flex flex-col">
+     <img alt="Cable USB-C OGW Flex con diseño trenzado y color negro con conectores plateados" class="rounded-t-lg object-cover h-48 w-full" height="300" src="https://storage.googleapis.com/a1aa/image/272a6962-f1c7-4505-93ab-16071ef054a9.jpg" width="400"/>
+     <div class="p-4 flex flex-col flex-grow">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">
+       Cable USB-C OGW Flex
+      </h3>
+      <p class="text-gray-700 flex-grow">
+       Cable resistente y flexible para carga y transferencia de datos rápida.
+      </p>
+      <div class="mt-4 flex items-center justify-between">
+       <span class="text-indigo-600 font-bold text-xl">
+        $14.99
+       </span>
+       <button aria-label="Agregar Cable USB-C OGW Flex al carrito" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+        Añadir
+       </button>
+      </div>
+     </div>
+    </article>
+    <article aria-label="Producto: Altavoz Bluetooth OGW Boom" class="bg-white rounded-lg shadow hover:shadow-lg transition flex flex-col">
+     <img alt="Altavoz Bluetooth OGW Boom portátil con diseño compacto y color azul vibrante" class="rounded-t-lg object-cover h-48 w-full" height="300" src="https://storage.googleapis.com/a1aa/image/dd14626b-a152-4551-56fe-bc65c604f12b.jpg" width="400"/>
+     <div class="p-4 flex flex-col flex-grow">
+      <h3 class="text-lg font-semibold text-gray-900 mb-2">
+       Altavoz Bluetooth OGW Boom
+      </h3>
+      <p class="text-gray-700 flex-grow">
+       Sonido potente, batería de larga duración y resistencia al agua IPX7.
+      </p>
+      <div class="mt-4 flex items-center justify-between">
+       <span class="text-indigo-600 font-bold text-xl">
+        $89.99
+       </span>
+       <button aria-label="Agregar Altavoz Bluetooth OGW Boom al carrito" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
+        Añadir
+       </button>
+      </div>
+     </div>
+    </article>
+   </div>
+  </section>
+  <!-- Offers Section -->
+  <section aria-label="Sección de ofertas especiales" class="bg-indigo-50 py-16" id="ofertas">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-indigo-700 text-center mb-12">
+     Ofertas Especiales
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+     <div aria-label="Oferta: 20% de descuento en Smartphone OGW X1" class="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
+      <img alt="Smartphone OGW X1 con etiqueta de descuento del 20 por ciento" class="rounded mb-4" height="150" src="https://storage.googleapis.com/a1aa/image/ffc30db1-7713-40a3-f12f-265e047d1b8c.jpg" width="200"/>
+      <h3 class="text-xl font-semibold text-indigo-600 mb-2">
+       20% de descuento en Smartphone OGW X1
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Aprovecha esta oferta limitada y obtén el mejor smartphone a un precio increíble.
+      </p>
+      <a class="inline-block bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 transition" href="#productos">
+       Comprar ahora
+      </a>
+     </div>
+     <div aria-label="Oferta: Audífonos OGW SoundPro con 15% de descuento" class="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
+      <img alt="Audífonos inalámbricos OGW SoundPro con etiqueta de descuento del 15 por ciento" class="rounded mb-4" height="150" src="https://storage.googleapis.com/a1aa/image/e7b68ada-c1a0-405d-82e3-6756a9a3ad81.jpg" width="200"/>
+      <h3 class="text-xl font-semibold text-indigo-600 mb-2">
+       15% de descuento en Audífonos OGW SoundPro
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Disfruta de tu música favorita con un sonido de alta calidad y ahorro especial.
+      </p>
+      <a class="inline-block bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 transition" href="#productos">
+       Comprar ahora
+      </a>
+     </div>
+     <div aria-label="Oferta: Smartwatch OGW Fit 2 con 10% de descuento" class="bg-white rounded-lg shadow p-6 flex flex-col items-center text-center">
+      <img alt="Smartwatch OGW Fit 2 con etiqueta de descuento del 10 por ciento" class="rounded mb-4" height="150" src="https://storage.googleapis.com/a1aa/image/d7c968d6-9793-4592-aa70-810561eb388a.jpg" width="200"/>
+      <h3 class="text-xl font-semibold text-indigo-600 mb-2">
+       10% de descuento en Smartwatch OGW Fit 2
+      </h3>
+      <p class="text-gray-700 mb-4">
+       Mantente activo y conectado con esta oferta especial en nuestro smartwatch.
+      </p>
+      <a class="inline-block bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 transition" href="#productos">
+       Comprar ahora
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Newsletter Section -->
+  <section aria-label="Sección para suscripción al boletín de noticias" class="bg-indigo-600 text-white py-16">
+   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-4">
+     Suscríbete a nuestro boletín
+    </h2>
+    <p class="mb-8 text-lg">
+     Recibe las últimas novedades, ofertas y lanzamientos directamente en tu correo.
+    </p>
+    <form aria-label="Formulario de suscripción al boletín" class="flex flex-col sm:flex-row justify-center gap-4">
+     <label class="sr-only" for="email">
+      Correo electrónico
+     </label>
+     <input class="w-full sm:w-auto px-4 py-3 rounded text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300" id="email" name="email" placeholder="Tu correo electrónico" required="" type="email"/>
+     <button class="bg-white text-indigo-600 font-bold px-6 py-3 rounded hover:bg-indigo-50 transition" type="submit">
+      Suscribirse
+     </button>
+    </form>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer aria-label="Pie de página con información de contacto y redes sociales" class="bg-white border-t border-gray-200 py-12">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div>
+     <h3 class="text-xl font-bold text-gray-900 mb-4">
+      OGW Tech
+     </h3>
+     <p class="text-gray-600 max-w-xs">
+      Tu tienda en línea de gadgets y accesorios tecnológicos de confianza.
+     </p>
+    </div>
+    <div>
+     <h3 class="text-xl font-bold text-gray-900 mb-4">
+      Contacto
+     </h3>
+     <ul class="text-gray-600 space-y-2">
+      <li>
+       <i class="fas fa-map-marker-alt mr-2 text-indigo-600">
+       </i>
+       Calle Tecnología 123,
+            Ciudad Tech, País
+      </li>
+      <li>
+       <i class="fas fa-phone mr-2 text-indigo-600">
+       </i>
+       +34 912 345 678
+      </li>
+      <li>
+       <i class="fas fa-envelope mr-2 text-indigo-600">
+       </i>
+       contacto@ogwtech.com
+      </li>
+     </ul>
+    </div>
+    <div>
+     <h3 class="text-xl font-bold text-gray-900 mb-4">
+      Síguenos
+     </h3>
+     <div class="flex space-x-6 text-gray-600">
+      <a aria-label="Facebook OGW Tech" class="hover:text-indigo-600 transition" href="#">
+       <i class="fab fa-facebook fa-2x">
+       </i>
+      </a>
+      <a aria-label="Twitter OGW Tech" class="hover:text-indigo-600 transition" href="#">
+       <i class="fab fa-twitter fa-2x">
+       </i>
+      </a>
+      <a aria-label="Instagram OGW Tech" class="hover:text-indigo-600 transition" href="#">
+       <i class="fab fa-instagram fa-2x">
+       </i>
+      </a>
+      <a aria-label="LinkedIn OGW Tech" class="hover:text-indigo-600 transition" href="#">
+       <i class="fab fa-linkedin fa-2x">
+       </i>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="mt-12 text-center text-gray-500 text-sm">
+    © 2024 OGW Tech. Todos los derechos reservados.
+   </div>
+  </footer>
+  <script>
+   const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+ </body>
 </html>
